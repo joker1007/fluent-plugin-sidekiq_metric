@@ -1,8 +1,22 @@
 # fluent-plugin-sidekiq_metric
 
-[Fluentd](http://fluentd.org/) input plugin to do something.
+[Fluentd](http://fluentd.org/) input plugin to collect sidekiq metrics.
 
-TODO: write description for you plugin.
+## Output example
+
+```json
+{
+  "processed": 12,
+  "failed": 1,
+  "scheduled_size": 3,
+  "retry_size": 1,
+  "dead_size": 0,
+  "processes_size":1,
+  "default_queue_latency": 0,
+  "workers_size": 1,
+  "enqueued": 0
+}
+```
 
 ## Installation
 
@@ -28,13 +42,43 @@ $ bundle
 
 ## Configuration
 
-You can generate configuration template:
+### tag (string) (required)
 
-```
-$ fluent-plugin-config-format input sidekiq_metric
-```
+Tag of the output events.
+
+### redis_url (string) (required)
+
+redis URL that sidekiq uses
+
+### namespace (string) (optional)
+
+config for redis-namespace
+
+### password (string) (optional)
+
+Password for redis authentication
+
+### connect_opts (hash) (optional)
+
+Other options for redis connection
+
+Default value: `{}`.
+
+### fetch_interval (time) (optional)
+
+Interval for fetching to redis
+
+Default value: `60`.
+
+### queue_names (array) (optional)
+
+Queue names for length aggregation per queue
+
+Default value: `[]`.
 
 You can copy and paste generated documents here.
+
+## Config Example
 
 ## Copyright
 
