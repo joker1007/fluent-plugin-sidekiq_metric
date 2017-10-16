@@ -117,4 +117,4 @@ You can copy and paste generated documents here.
 
 * Copyright(c) 2017- joker1007
 * License
-  * Apache License, Version 2.0
+  * MIT License

@@ -3,14 +3,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name    = "fluent-plugin-sidekiq_metric"
-  spec.version = "0.1.0"
+  spec.version = "0.1.1"
   spec.authors = ["joker1007"]
   spec.email   = ["kakyoin.hierophant@gmail.com"]
 
   spec.summary       = %q{sidekiq metric collector plugin for fluentd.}
   spec.description   = %q{sidekiq metric collector plugin for fluentd.}
   spec.homepage      = "https://github.com/joker1007/fluent-plugin-sidekiq_metric"
-  spec.license       = "Apache-2.0"
+  spec.license       = "MIT"
 
   begin
     test_files, files  = `git ls-files -z`.split("\x0").partition do |f|
