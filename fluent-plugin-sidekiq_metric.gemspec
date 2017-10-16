@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{sidekiq metric collector plugin for fluentd.}
   spec.description   = %q{sidekiq metric collector plugin for fluentd.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/joker1007/fluent-plugin-sidekiq_metric"
   spec.license       = "Apache-2.0"
 
   begin
