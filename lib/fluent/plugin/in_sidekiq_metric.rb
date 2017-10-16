@@ -51,7 +51,7 @@ module Fluent
 
       def start
         super
-        @timer = timer_execute("sidekiq_metric_timer", @fetch_interval, &method(:run))
+        @timer = timer_execute(:sidekiq_metric_timer, @fetch_interval, &method(:run))
       end
 
       def run
