@@ -99,6 +99,20 @@ You can copy and paste generated documents here.
 
 ## Config Example
 
+```
+<source>
+  @type sidekiq_metric
+  tag sidekiq
+  redis_url redis://redis:6379
+  fetch_interval 10s
+  queue_names default
+</source>
+
+<match sidekiq>
+  @type stdout
+</match>
+```
+
 ## Copyright
 
 * Copyright(c) 2017- joker1007
