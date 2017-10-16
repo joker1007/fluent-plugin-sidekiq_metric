@@ -18,6 +18,25 @@
 }
 ```
 
+If queue_names is set, output becomes following.
+ex: `queue_names queue1, queue2`
+
+```
+{
+  "processed": 12,
+  "failed": 1,
+  "scheduled_size": 3,
+  "retry_size": 1,
+  "dead_size": 0,
+  "processes_size":1,
+  "default_queue_latency": 0,
+  "workers_size": 1,
+  "enqueued": 0,
+  "queue1_length": 1,
+  "queue2_length": 10
+}
+```
+
 ## Installation
 
 ### RubyGems
