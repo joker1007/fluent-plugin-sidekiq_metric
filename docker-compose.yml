@@ -1,0 +1,48 @@
+version: "2"
+services:
+  redis:
+    image: redis:alpine
+
+  test:
+    image: ruby:2.4-alpine3.6
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    working_dir: /app
+    environment:
+      REDIS_URL: "redis://redis:6379"
+      # for test environment
+      CI: ${CI}
+      CIRCLECI: ${CIRCLECI}
+      CIRCLE_BRANCH: ${CIRCLE_BRANCH}
+      CIRCLE_NODE_INDEX: ${CIRCLE_NODE_INDEX}
+      CIRCLE_NODE_TOTAL: ${CIRCLE_NODE_TOTAL}
+      CIRCLE_BUILD_NUM: ${CIRCLE_BUILD_NUM}
+      CI_PULL_REQUEST: ${CI_PULL_REQUEST}
+      CIRCLE_PROJECT_USERNAME: ${CIRCLE_PROJECT_USERNAME}
+      CIRCLE_PROJECT_REPONAME: ${CIRCLE_PROJECT_REPONAME}
+      CIRCLE_PR_NUMBER: ${CIRCLE_PR_NUMBER}
+      CIRCLE_SHA1: ${CIRCLE_SHA1}
+      CODECOV_TOKEN: ${CODECOV_TOKEN}
+    depends_on:
+      - redis
+      - sidekiq
+    command: ["sh", "./run.sh"]
+
+  sidekiq:
+    build:
+      context: .
+    volumes:
+      - .:/app
+      - bundle:/usr/local/bundle
+    working_dir: /app
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL: "redis://redis:6379"
+    command: ["sh", "./run_sidekiq.sh"]
+
+
+volumes:
+  bundle:
+    driver: local
