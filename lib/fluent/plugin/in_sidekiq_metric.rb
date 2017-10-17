@@ -1,6 +1,7 @@
 require "fluent/plugin/input"
 require "oj"
 require "redis"
+require "redis/namespace"
 
 module Fluent
   module Plugin
